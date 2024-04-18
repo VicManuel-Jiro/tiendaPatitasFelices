@@ -1,0 +1,166 @@
+.container-slider{
+	margin: 30px 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.slider{
+	display: flex;
+	width: 300%;
+	height: 300px;
+	margin-left: -100%;
+	position: relative;
+}
+.slider:before{
+	content: "";
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	height: 100%;
+}
+.slider__section{
+	width: 100%;
+	position: relative;
+}
+.slider__img{
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: fill;
+}
+.slider__btn{
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	background: rgba(255, 255, 255, 0.7);
+	top: 50%;
+	transform: translate(-50%);
+	font-size: 30px;
+	font-weight: bold;
+	font-family: monospace;
+	text-align: center;
+	border-radius: 50%;
+	cursor: pointer;
+	z-index: 3;
+}
+.slider__btn:hover{
+	background: #fff;
+
+}
+.slider__btn--left{
+	left: 50px;
+}
+.slider__btn--right{
+	right: 10px;
+}
+.slider__content{
+	position: absolute;
+	top: 50%;
+	z-index: 2;
+	left: 50%;
+	color: white;
+	transform: translate(-50%,-50%);
+	width: 60%;
+	text-align: center;
+}
+.slider__title{
+	font-size: 2em;
+	margin: 0;
+}
+.slider__txt{
+	text-align: center;
+	margin: 5px 0;
+}
+.btn-shop{
+	display: block;
+	border: 1px solid #FF4E00;
+	color: white;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	width: 150px;
+	margin: 10px auto;
+	transition: all 0.5s;
+}
+.btn-shop:hover{
+	background: #FF4E00;
+	color: white;
+}
+
+
+.product_link{
+   text-decoration: none;
+
+}
+.product__title{
+  color: black;
+}
+.product__txt{
+  margin: 0;
+  color: black;
+}
+.product__estado{
+  margin: 0;
+  color: #ff4e00;
+  font-weight: bold;
+}
+
+  .main-header__btn:hover{
+  cursor: pointer;
+  background: #FF4E00;
+  color: white;
+  border-color: #FF4E00;
+}
+/*estilos tablet*/
+@media screen and (min-width: 768px){
+	.slider{
+		height: 400px;
+	}
+	.product__img{
+		height: 130px;
+	}
+	
+}
+/*estilos web*/
+@media screen and (min-width: 1024px){ 
+	.container-slider{
+		width: 1000px;
+		margin: auto;
+	}
+	.slider{
+		height: 550px;
+		font-size: 1.5em;
+	}
+	.container-products{
+		grid-template-columns: repeat(4, 1fr);
+	}
+	.product__img{
+		height: 160px;
+	}
+
+}
+@media screen and (min-width: 1280px){ 
+	.container-slider{
+		width: 1200px;
+	}
+	.slider{
+		height: 600px;
+	}
+	.product__img{
+		height: 180px;
+	}
+}
+@media screen and (min-width: 1600px){ 
+	.container-slider{
+		width: 1500px;
+	}
+	.slider{
+		height: 650px;
+	}
+	.product__img{
+		height: 200px;
+	}
+}

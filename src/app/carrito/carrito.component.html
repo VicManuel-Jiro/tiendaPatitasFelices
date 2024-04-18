@@ -1,0 +1,153 @@
+
+<div class="contain">
+  <div class="detalles">
+    <div class="panel-heading">
+      <h3 class="panel-body-title">Productos</h3>
+    </div>
+    <div class="panel-body">
+      <div class="vacio" *ngIf="vacio===0" ><p>Por el momento no hay productos que mostrar</p></div>
+      <div class="cart-item" *ngFor="let item of items;let indice=index">
+        <div class="div-img">
+          <a class="product_link" routerLink="/accesorio/{{item._id}}" routerLinkActive="active">
+            <img class="product__img" src="{{url+'get-image/'+item.imagen}}" *ngIf="item.imagen" />
+            <img class="product__img" src="../../assets/img/no-disponible.png" *ngIf="!item.imagen" />
+          </a>
+        </div>
+        <div class="info">
+          <h3 class="prod-panel-title">{{ item.nombre }} </h3>
+          <h3 class="prod-panel-price">{{ item.precio.valueOf()  | currency}} x{{productos[indice][1]}}</h3>
+
+          <a class="borrar" (click)="borrar(item._id)"><h4 class="fas fa-trash-alt"></h4></a>
+          <p class="prod-panel-desc">{{item.descripcion}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="a-pagar">
+    <div id="divSubTotal" class="panel-heading">
+      <h4 class="panel-title">SubTotal:</h4>
+      <div class="panel-pago">
+        <h5>{{subtotal | currency}}</h5>
+      </div>
+    </div>
+    <div id="divTotal" class="panel-heading">
+      <h4 class="panel-title">Total:</h4>
+      <div class="panel-pago">
+        <h5>{{total | currency}} </h5>
+      </div>
+    </div>
+    <div class="vacio" *ngIf="(vacio!==0 && tipousuario!=='admin'&&tipousuario!=='empleado'&&tipousuario!=='cliente')">
+      <div class="button-pagar">
+       <a (click)="redirec()" class="product__shop">Pagar</a>
+     </div>
+     </div> 
+    <div *ngIf="(tipousuario=='admin'||tipousuario=='empleado'||tipousuario=='cliente')">
+    <div class="shipping" *ngIf="vacio!==0">
+      <h4>Precios por Shipping</h4>
+      <label><input type="radio" [(ngModel)]="ship" name="shipping" value='100' (change)="sumtotal()" required> Dia siguiente -> $100</label><br/>
+      <label><input type="radio" [(ngModel)]="ship" name="shipping" value='50' (change)="sumtotal()" required> 2 Dias -> $50</label><br/>
+      <label><input type="radio" [(ngModel)]="ship" name="shipping" value='30' (change)="sumtotal()" required checked> Postal -> $30</label><br/>
+    </div>
+
+
+    <div class="shipping" *ngIf="vacio!==0">
+      <h4>Metodo de pago</h4>
+      <label><input type="radio" [(ngModel)]="pago" name="mpago" value='1' required (change)="metodo2()">Tarjeta</label><br/>
+      <label *ngIf="(tipousuario=='admin'||tipousuario=='empleado')"><input type="radio" [(ngModel)]="pago" name="mpago" value='2' required checked="true" (change)="metodo2()">En efectivo</label><br/>
+    </div>
+    <div *ngIf="pago==1">
+      <form #formm="ngForm" (ngSubmit)="onSubmit2(formm)" [hidden]="activep==1">
+        <label for="nombreTarjeta">Nombre:</label> <br/>
+        <input type="email" name="nombreTarjeta" #nombreTarjeta="ngModel" [(ngModel)]="pedido.nombreTarjeta" required pattern="^[a-zA-ZÀ-ÿ0-9\s\u00f1\u00d1]+$" /><br/>
+        <span class="form-warning" *ngIf="nombreTarjeta.touched && !nombreTarjeta.valid">
+          El nombre es obligatorio
+        </span>
+        <br/>
+        <label for="tarjeta">Tarjeta:</label> <br/>
+        <input type="text" name="tarjeta" #tarjeta="ngModel" [(ngModel)]="pedido.tarjeta" required pattern="\d{16}$"placeholder="NUMERO DE TARJETA"/><br/><span class="form-warning" *ngIf="tarjeta.touched && !tarjeta.valid">
+          Ingrese una tarjeta valida
+        </span>
+        <br/>
+        <input type="text" name="cvc" #cvc="ngModel" [(ngModel)]="pedido.cvc" required pattern="\d{3}$" placeholder="CVC" /><br/>
+        <span class="form-warning" *ngIf="tarjeta.touched && !tarjeta.valid">
+          ingrese un cvc valido
+        </span>
+        <br/>
+        <input type="text" name="mes" #mes="ngModel" [(ngModel)]="pedido.mes" required pattern="\d{2}$"placeholder="MM"/><br/>
+        <span class="form-warning" *ngIf="tarjeta.touched && !tarjeta.valid">
+          ingrese solo dos digitos del mes
+        </span>
+        <br/>
+        <input type="text" name="year" #year="ngModel" [(ngModel)]="pedido.year" required pattern="\d{2}$"placeholder="YY"/><br/>
+        <span class="form-warning" *ngIf="tarjeta.touched && !tarjeta.valid">
+          ingrese solo dos digitos del año
+        </span>
+        <br/>
+
+        <input class="button" type="submit" value="registrar datos" [disabled]="!formm.form.valid"/>
+      </form>
+    </div>
+
+
+      <div class="shipping" *ngIf="vacio!==0">
+        <h4>Direccion</h4>
+        <label *ngIf="(tipousuario=='admin'||tipousuario=='empleado'||tipousuario=='cliente')"><input type="radio" [(ngModel)]="direc" name="direc" value='1' required (change)="metodo()">Direccion registrada</label><br/>
+        <label><input type="radio" [(ngModel)]="direc" name="direc" value='2' required (change)="metodo()">Nueva direccion</label><br/>
+      </div>
+      <div *ngIf="direc==2">
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)" [hidden]="active==1">
+          <label for="correo">Correo:</label> <br/>
+          <input type="email" name="correo" #correo="ngModel" [(ngModel)]="pedido.correo" required pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" /><br/>
+          <span class="form-warning" *ngIf="correo.touched && !correo.valid">
+            Ingrese un correo valido
+          </span>
+          <br/>
+          <label for="direccion">Direccion:</label> <br/>
+          <input type="text" name="direccion" #direccion="ngModel" [(ngModel)]="pedido.direccion" required pattern="^[a-zA-ZÀ-ÿ0-9\s\u00f1\u00d1]+$"/><br/>
+          <span class="form-warning" *ngIf="direccion.touched && !direccion.valid">
+            La direccion es obligatoria
+          </span>
+          <br/>
+          <label for="pais">Pais:</label> <br/>
+          <input type="text" name="pais" #pais="ngModel" [(ngModel)]="pedido.pais" required pattern="^[a-zA-ZÀ-ÿ0-9\s\u00f1\u00d1]+$"/><br/>
+          <span class="form-warning" *ngIf="pais.touched && !pais.valid">
+            El pais es obligatorio
+          </span>
+          <br/>
+          <label for="estado">Estado:</label> <br/>
+          <input type="text" name="estado" #estado="ngModel" [(ngModel)]="pedido.estado" required pattern="^[a-zA-ZÀ-ÿ0-9\s\u00f1\u00d1]+$"/><br/>
+          <span class="form-warning" *ngIf="estado.touched && !estado.valid">
+            El Estado es obligatorio
+          </span>
+          <br/>
+          <label for="ciudad">Ciudad:</label> <br/>
+          <input type="text" name="ciudad" #ciudad="ngModel" [(ngModel)]="pedido.ciudad" required pattern="^[a-zA-ZÀ-ÿ0-9\s\u00f1\u00d1]+$"/><br/>
+          <span class="form-warning" *ngIf="ciudad.touched && !ciudad.valid">
+            La ciudad es obligatoria
+          </span>
+          <br/>
+          <label for="cp">Codigo Postal:</label> <br/>
+          <input type="text" name="cp" #cp="ngModel" [(ngModel)]="pedido.cp" required pattern="^\d{4,5}$"/><br/>
+          <span class="form-warning" *ngIf="cp.touched && !cp.valid">
+            El codigo postal es obligatorio
+          </span>
+          <br/>
+          <label for="telefono">Telefono:</label> <br/>
+          <input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="pedido.telefono" required pattern="^\d{10}$"/><br/>
+          <span class="form-warning" *ngIf="telefono.touched && !telefono.valid">
+            El telefono es obligatorio
+          </span>
+          <br/>
+          <input class="button" type="submit" value="registrar direccion" [disabled]="!form.form.valid"/>
+        </form>
+      </div>
+
+
+      <div class="button-pagar" *ngIf="vacio!==0 && ( (direc<2&&direc>0) || active==1) && (pago>1 || activep==1)">
+
+       <a (click)="pagar()" class="product__shop">Pagar</a>
+     </div>
+   </div>
+  </div>
+</div>

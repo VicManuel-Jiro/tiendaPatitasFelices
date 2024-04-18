@@ -1,0 +1,45 @@
+<div *ngIf="(tipousuario=='admin'||tipousuario=='empleado')">
+	<a class="main-header__btn" [routerLink]="['/crear-producto']" routerLinkActive="active">Agregar Producto</a>
+</div>
+<h2 class="main-title">Nuevos Productos</h2>
+
+<section class="container-products">
+	<div  *ngFor=" let item of products_new | slice:0:4;">
+		
+		<div class="product__new" >
+			<a class="product_link" routerLink="/accesorio/{{item._id}}" routerLinkActive="active">
+				<img class="product__img" src="{{url+'get-image/'+item.imagen}}" *ngIf="item.imagen"/>
+				<img class="product__img" src="../../assets/img/no-disponible.png" *ngIf="!item.imagen" />
+				<div class="product__description">
+					<h3 class="product__title" [ngStyle]="{'text-decoration':item.existencia == 0 ? 'line-through' :'transparent' }">{{item.nombre}}</h3>
+					<span class="product__price">{{item.precio.valueOf()  | currency}}</span>
+				</div>
+			</a>
+			<div [style.display]="(item.existencia > 0)  ? 'block' : 'none'">
+				<a (click)="addToCart(item)" class="product__shop">Agregar al carrito <i class="product__icon fas fa-cart-plus"></i></a>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<h2 class="main-title">Nuestros productos</h2>
+
+<section class="container-products">
+	<div *ngFor=" let item of products">
+		<div class="product" >
+			<a class="product_link" routerLink="/accesorio/{{item._id}}" routerLinkActive="active">
+				<img class="product__img" src="{{url+'get-image/'+item.imagen}}" *ngIf="item.imagen"/>
+				<img class="product__img" src="../../assets/img/no-disponible.png" *ngIf="!item.imagen" />
+				<div class="product__description">
+					<h3 class="product__title" [ngStyle]="{'text-decoration':item.existencia == 0 ? 'line-through' :'transparent' }">{{item.nombre}}</h3>
+					<span class="product__price">{{item.precio.valueOf()  | currency}}</span>
+				</div>
+			</a>
+			<div [style.display]="(item.existencia > 0)  ? 'block' : 'none'">
+				<a (click)="addToCart(item)" class="product__shop">Agregar al carrito <i class="product__icon fas fa-cart-plus"></i></a>
+			</div>
+		</div>
+	</div>
+</section>
+

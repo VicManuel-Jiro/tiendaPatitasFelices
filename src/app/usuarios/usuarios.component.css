@@ -1,0 +1,79 @@
+img{
+	max-width: 64px;
+	max-height: 64px;
+	width:64px;
+    height:64px;
+    border-radius:50%;
+  	border:2px solid #666;
+  	object-fit: fill;
+}
+a{
+	text-decoration: none;
+}
+.main-header__btn{
+  border: 1px solid #454546;
+  color: #454546;
+  display: block;
+  padding: 10px;
+  width: 140px;
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: all 0.5s;
+}
+  .main-header__btn:hover{
+  cursor: pointer;
+  background: #FF4E00;
+  color: white;
+  border-color: #FF4E00;
+}
+.tipousuario{
+	border:1px solid #666;
+	background: #FF4E00;
+	margin-top: 10px;
+}
+.main-title{
+	margin: 5px 15px;
+	color: white;
+}
+.contenido{
+	border:1px solid #666;
+	margin-bottom: 10px;
+	background: #454546;
+}
+.listaUsuarios{
+	width: 100%;
+	padding: 5px;
+	display: grid;
+  	grid-template-columns: repeat(3, 1fr);
+  	grid-gap: 15px;
+  	
+}
+.link{
+	width: 100%;
+
+}
+.link:hover{
+	cursor: pointer;
+}
+.usuario{
+	border:1px solid #666;
+	margin-bottom: 5px;
+	background: whitesmoke;
+
+	width: 100%;
+	display: flex;
+}
+.image{
+	float: left;
+	width: 10%;
+	margin: 10px;
+
+}
+.datos{
+text-decoration: none;
+	float: left;
+	width: 50%;
+	margin: auto;
+	margin-left: 10%;
+}
+

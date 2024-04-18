@@ -1,0 +1,52 @@
+<div *ngIf="(tipousuario!=='admin'&& tipousuario!=='empleado')">
+<div class="content">
+	<h2 class="main-title">Contacto</h2>
+	<div class="main-cuerpo">
+		
+			<div *ngIf="contact_saved">
+				Gracias, tu opinion cuenta
+			</div>
+			<form #formContacto="ngForm" (ngSubmit)="onSubmit(formContacto)">
+				<label for="nombre">Nombre</label> <br/>
+				<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="usuario.nombre"
+				required pattern="[a-zA-Z]+"/>
+				<span *ngIf="nombre.touched && !nombre.valid">
+					El nombre es obligatorio
+				</span>
+				<br/>
+				<label for="apellidos">Apellidos</label> <br/>
+				<input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="usuario.apellidos" required pattern="[a-zA-Z]+" />
+				<span *ngIf="apellidos.touched && !apellidos.valid">
+					Los apellidos son obligatorios
+				</span>
+				<br/>
+				<label for="email">Email</label> <br/>
+				<input type="email" name="email" #email="ngModel" [(ngModel)]="usuario.email" required pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" />
+				<span *ngIf="email.touched && !email.valid">
+					El email no es válido
+				</span>
+				<br/>
+				<label for="mensaje">Mensaje</label> <br/>
+				<textarea name="mensaje" #mensaje="ngModel" [(ngModel)]="usuario.mensaje" required></textarea>
+				<span *ngIf="mensaje.touched && !mensaje.valid">
+					El mensaje es obligatorio
+				</span>
+				<br/>
+				<input type="submit" value="Enviar" [disabled]="!formContacto.form.valid"/>
+			</form>
+		</div>
+	</div>
+</div>
+<div *ngIf="(tipousuario=='admin'||tipousuario=='empleado')">
+	<div class="emp-content">
+		<h2 class="main-title">Mensajes</h2>
+		<div class="emp-main-cuerpo">
+			<div class="rep" *ngFor="let item of mensajes">
+				<p class="main-txt"><b>Nombre:</b> {{item.nombre}} {{item.apellidos}}</p>
+				<p class="main-txt"><b>Correo:</b> {{item.email}}</p>
+				<p class="main-txt"><b>Mensaje:</b></p>
+				<p class="main-txt">{{item.mensaje}}</p>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,42 @@
+<div *ngIf="(tipousuario=='admin'|| tipousuario=='empleado')">
+	<div class="content">
+		<h2 class="main-title">Crear Producto</h2>
+		<div class="main-cuerpo">
+			<form #formProducto="ngForm" (ngSubmit)="onSubmit(formProducto)">
+				<label for="codigoBarras">Codigo de Barras:</label> <br/>
+				<input type="text" name="codigoBarras" #codigoBarras="ngModel" [(ngModel)]="producto.codigoBarras" required pattern="^\d+$"/><br/>
+				<span class="form-warning" *ngIf="codigoBarras.touched && !codigoBarras.valid">
+					El codigo de Barras es obligatorio y en numero
+				</span>
+				<br/>
+				<label for="nombre">Nombre:</label> <br/>
+				<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="producto.nombre" required pattern="^[a-zA-ZÀ-ÿ0-9\s\u00f1\u00d1]+$"/><br/>
+				<span class="form-warning" *ngIf="nombre.touched && !nombre.valid">
+					El nombre es obligatorio
+				</span>
+				<br/>
+				<label for="precio">Precio:</label> <br/>
+				<input type="text" name="precio" #precio="ngModel" [(ngModel)]="producto.precio" required pattern="^\d+$"/><br/>
+				<span class="form-warning" *ngIf="precio.touched && !precio.valid">
+					El precio es obligatorio y en numero
+				</span>
+				<br/>
+				<label for="existencia">existencia:</label> <br/>
+				<input type="text" name="existencia" #existencia="ngModel" [(ngModel)]="producto.existencia" required pattern="^\d+$"/><br/>
+				<span class="form-warning" *ngIf="existencia.touched && !existencia.valid">
+					La existencia es obligatoria y en numero
+				</span>
+				<br/>
+				<label for="descripcion">Descripcion:</label> <br/>
+				<textarea name="descripcion" #descripcion="ngModel" [(ngModel)]="producto.descripcion" required></textarea><br/>
+				<span class="form-warning" *ngIf="descripcion.touched && !descripcion.valid">
+					La descripcion es obligatoria
+				</span>
+				<br/>
+				<label for="imagen">Imagen</label><br/>
+				<input type="file" name="imagen" (change)="fileChangeEvent($event)" required /><br/><br/>
+				<input class="button" type="submit" value="Crear" [disabled]="!formProducto.form.valid"/>
+			</form>
+		</div>
+	</div>
+</div>

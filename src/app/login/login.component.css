@@ -1,0 +1,29 @@
+.main-title{
+	text-align: center;
+	width: 100%;
+}
+.content{
+  background: #ddd;
+  width: 30%;
+  height: 100%;
+  margin: auto;
+  flex-wrap: wrap;
+  align-content:flex-start;
+  padding-bottom: 15px;
+}
+.main-cuerpo{
+  width: 50%;
+  align-content: center;
+  align-items: center;
+  margin: auto;
+  font-size: 1.5em;
+}
+h2{
+  font-size: 2.5em;
+}
+.signup_link{
+  font-size: 0.7em;
+  margin-left: 20%;
+  color: blue;
+  text-decoration: underline !important;
+}

@@ -1,0 +1,29 @@
+<div *ngIf="!user_exist" class="content">
+	<h2 class="main-title">Login</h2>
+	<div class="main-cuerpo">
+
+
+
+		<form #formLogin="ngForm" (ngSubmit)="onSubmit(formLogin)">
+			<label for="usuario">Usuario</label> <br/>
+			<input type="text" name="usuario" #usuario="ngModel" [(ngModel)]="user.usuario"
+			required/>
+			<span *ngIf="usuario.touched && !usuario.valid">
+				Ingrese un usuario
+			</span>
+			<br/>
+			<label for="pass">Contraseña</label> <br/>
+			<input type="password" name="pass" #pass="ngModel" [(ngModel)]="user.pass" required />
+			<span *ngIf="pass.touched && !pass.valid">
+				Escriba la contraseña
+			</span>
+			<br/>
+			<input type="submit" value="Enviar" [disabled]="!formLogin.form.valid"/>
+		</form>
+
+		<div *ngIf="status=='failed'">
+			El usuario o la contraseña son erroneos
+		</div>
+	</div>
+	<br/><a class="signup_link" routerLink="/crear-usuario" routerLinkActive="active">Aun no tienes cuenta? registrate aqui, it's free!</a>
+</div>

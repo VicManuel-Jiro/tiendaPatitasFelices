@@ -1,0 +1,49 @@
+.main-title{
+	text-align: center;
+	width: 100%;
+}
+.main-txt{
+  margin: 0;
+}
+.rep{
+  margin-bottom: 10px;
+  border: 1px solid #aaa;
+}
+.emp-content{
+  background: #ddd;
+  width: 85%;
+  height: 100%;
+  margin: auto;
+  flex-wrap: wrap;
+  align-content:flex-start;
+  padding-bottom: 15px;
+}
+.emp-main-cuerpo{
+  width: 95%;
+  margin: auto;
+  font-size: 1em;
+}
+.content{
+  background: #ddd;
+  width: 30%;
+  height: 100%;
+  margin: auto;
+  flex-wrap: wrap;
+  align-content:flex-start;
+  padding-bottom: 15px;
+}
+.main-cuerpo{
+  width: 50%;
+  align-content: center;
+  align-items: center;
+  margin: auto;
+  font-size: 1.5em;
+}
+h2{
+  font-size: 2.5em;
+}
+textarea{
+  width: 200px;
+  height: 100px;
+  margin: 0;
+}

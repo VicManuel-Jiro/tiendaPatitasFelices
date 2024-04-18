@@ -1,0 +1,66 @@
+<div *ngIf="(tipousuario=='admin'|| tipousuario=='empleado')">
+	<div class="producto">
+		<section class="container-products">
+			<div class="product">
+				<input class="button-del-img" type="button" value="Eliminar imagen" (click)="delimgProducto()"/>
+				<img class="product__img" src="{{url+'get-image/'+producto.imagen}}" *ngIf="producto.imagen" />
+				<img class="product__img" src="../../assets/img/no-disponible.png" *ngIf="!producto.imagen" />
+				<div class="product__description">
+					<form #formProducto="ngForm" (ngSubmit)="onSubmit(formProducto)">
+						<label for="codigoBarras">Codigo de Barras:</label> <br/>
+						<input type="text" name="codigoBarras" #codigoBarras="ngModel" [(ngModel)]="producto.codigoBarras" required pattern="^\d+$"/><br/>
+						<span class="form-warning" *ngIf="codigoBarras.touched && !codigoBarras.valid">
+							El codigo de Barras es obligatorio y en numero
+						</span>
+						<br/>
+						<label for="nombre">Nombre:</label> <br/>
+						<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="producto.nombre" required pattern="^[a-zA-ZÀ-ÿ0-9\s\u00f1\u00d1]+$"/><br/>
+						<span class="form-warning" *ngIf="nombre.touched && !nombre.valid">
+							El nombre es obligatorio
+						</span>
+						<br/>
+						<label for="precio">Precio:</label> <br/>
+						<input type="text" name="precio" #precio="ngModel" [(ngModel)]="producto.precio" required pattern="^\d+$"/><br/>
+						<span class="form-warning" *ngIf="precio.touched && !precio.valid">
+							El precio es obligatorio y en numero
+						</span>
+						<br/>
+						<label for="existencia">existencia:</label> <br/>
+						<input type="text" name="existencia" #existencia="ngModel" [(ngModel)]="producto.existencia" required pattern="^\d+$"/><br/>
+						<span class="form-warning" *ngIf="existencia.touched && !existencia.valid">
+							La existencia es obligatoria y en numero
+						</span>
+						<br/>
+						<label for="descripcion">Descripcion:</label> <br/>
+						<textarea name="descripcion" #descripcion="ngModel" [(ngModel)]="producto.descripcion" required></textarea><br/>
+						<span class="form-warning" *ngIf="descripcion.touched && !descripcion.valid">
+							La descripcion es obligatoria
+						</span>
+						<br/>
+						<input type="file" name="imagen" (change)="fileChangeEvent($event)"/><br/><br/>
+						<input class="button" type="submit" value="Actualizar" [disabled]="!formProducto.form.valid"/>
+						<input class="button-del" type="button" value="Eliminar" (click)="delProducto()"/>
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+<div *ngIf="(tipousuario!=='admin'&& tipousuario!=='empleado')">
+	<div class="producto">
+		<section class="container-products">
+			<div class="product">
+				<img class="product__img" src="{{url+'get-image/'+producto.imagen}}" *ngIf="producto.imagen" />
+				<img class="product__img" src="../../assets/img/no-disponible.png" *ngIf="!producto.imagen" />
+				<div class="product__description">
+					<h2 >{{producto.nombre}}</h2> <br/>
+					<label >Precio: {{producto.precio.valueOf()  | currency}}</label> <br/>
+					<label >Descripcion: {{producto.descripcion}}</label> <br/>
+				</div>
+				<div [style.display]="producto.existencia > 0  ? 'block' : 'none'">
+					<a class="product__shop" (click)="addToCart(producto)" >Agregar al carrito <i class="product__icon fas fa-cart-plus"></i></a>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>

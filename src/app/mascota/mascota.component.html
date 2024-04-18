@@ -1,0 +1,55 @@
+<div *ngIf="(tipousuario=='admin'|| tipousuario=='empleado')">
+	<div class="mascota">
+		<section class="container-products">
+			<div class="product">
+				<input class="button-del-img" type="button" value="Eliminar imagen" (click)="delimgMascota()"/>
+				<img class="product__img" src="{{url+'get-image/'+pet.imagen}}" *ngIf="pet.imagen" />
+				<img class="product__img" src="../../assets/img/no-disponible.png" *ngIf="!pet.imagen" />
+				<div class="product__description">
+					<form #formMascota="ngForm" (ngSubmit)="onSubmit(formMascota)">
+						<label for="nombre"><b>Nombre de la raza (pug/husky/siames...):</b></label> <br/>
+						<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="pet.nombre" required pattern="^[a-zA-ZÀ-ÿ0-9\s\u00f1\u00d1]+$"/><br/>
+						<span class="form-warning" *ngIf="nombre.touched && !nombre.valid">
+							El nombre es obligatorio
+						</span>
+						<br/>
+						<label for="edad"><b>En existencia:</b></label> <br/>
+						<input type="text" name="edad" #edad="ngModel" [(ngModel)]="pet.edad" required pattern="^\d+$"/><br/>
+						<span class="form-warning" *ngIf="edad.touched && !edad.valid">
+							El stock es obligatorio y en numero
+						</span>
+						<br/>
+						<label for="raza"><b>Tipo de mascota (perro/gato/hamster...):</b></label> <br/>
+						<input type="text" name="raza" #raza="ngModel" [(ngModel)]="pet.raza" required pattern="^[a-zA-ZÀ-ÿ0-9\s\u00f1\u00d1]+$"/><br/>
+						<span class="form-warning" *ngIf="raza.touched && !raza.valid">
+							El tipo es obligatorio
+						</span>
+						<br/>
+						<label for="imagen"><b>Cambiar Imagen:</b></label><br/>
+						<input type="file" name="imagen" (change)="fileChangeEvent($event)"/><br/><br/>
+						<input class="button" type="submit" value="Actualizar" [disabled]="!formMascota.form.valid"/>
+						<input class="button-del" type="button" value="Eliminar" (click)="delMascota()"/>
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+<div *ngIf="(tipousuario!=='admin' && tipousuario!=='empleado')">
+	<div class="mascota">
+		<section class="container-products">
+			<div class="product">
+				<img class="product__img" src="{{url+'get-image/'+pet.imagen}}" *ngIf="pet.imagen" />
+				<img class="product__img" src="../../assets/img/no-disponible.png" *ngIf="!pet.imagen" />
+				<div class="product__description">
+					<form #formMascota="ngForm" (ngSubmit)="onSubmit(formMascota)">
+						<h2 for="nombre"><b>{{pet.raza}} {{pet.nombre}}</b></h2> <br/>
+						<label for="edad"><b>En existencia:</b> {{pet.edad}}</label> <br/>
+						<label for="raza"><b>Tipo de mascota:</b> {{pet.raza}}</label> <br/>
+						<p class="product__txt"><b>Estado:</b> </p><label [style.color]="pet.estado=='No Disponible' ? 'red': 'green'" class="product__estado">{{pet.estado}}</label>
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>

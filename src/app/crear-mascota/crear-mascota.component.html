@@ -1,0 +1,30 @@
+<div *ngIf="(tipousuario=='admin'|| tipousuario=='empleado')">
+	<div class="content">
+		<h2 class="main-title">Crear Mascota</h2>
+		<div class="main-cuerpo">
+			<form #formMascota="ngForm" (ngSubmit)="onSubmit(formMascota)">
+				<label for="nombre">Nombre de la raza(pug/husky/siames...):</label> <br/>
+				<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="pet.nombre" required pattern="^[a-zA-ZÀ-ÿ0-9\s\u00f1\u00d1]+$"/><br/>
+				<span class="form-warning" *ngIf="nombre.touched && !nombre.valid">
+					El nombre es obligatorio
+				</span>
+				<br/>
+				<label for="edad">En stock:</label> <br/>
+				<input type="text" name="edad" #edad="ngModel" [(ngModel)]="pet.edad" required pattern="^\d+$"/><br/>
+				<span class="form-warning" *ngIf="edad.touched && !edad.valid">
+					El stock es obligatorio y en numero
+				</span>
+				<br/>
+				<label for="raza">Tipo de mascota(perro/gato/hamster...):</label> <br/>
+				<input type="text" name="raza" #raza="ngModel" [(ngModel)]="pet.raza" required pattern="^[a-zA-ZÀ-ÿ0-9\s\u00f1\u00d1]+$"/><br/>
+				<span class="form-warning" *ngIf="raza.touched && !raza.valid">
+					El tipo es obligatorio
+				</span>
+				<br/>
+				<label for="imagen">Imagen</label><br/>
+				<input type="file" name="imagen" (change)="fileChangeEvent($event)" required /><br/><br/>
+				<input class="button" type="submit" value="Crear" [disabled]="!formMascota.form.valid"/>
+			</form>
+		</div>
+	</div>
+</div>

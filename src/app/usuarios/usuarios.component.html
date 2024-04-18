@@ -1,0 +1,61 @@
+<div *ngIf="(tipousuario=='admin')">
+	<a class="main-header__btn" [routerLink]="['/crear-usuario']" routerLinkActive="active">Agregar usuario</a>
+</div>
+<div *ngIf="(tipousuario=='admin')">
+	<div class="content">
+		<div class="tipousuario" (click)="ishidden=!ishidden">
+			<h2 class="main-title">Empleados</h2>
+		</div>
+		<div class="contenido" [hidden]="ishidden">
+			<div class="listaUsuarios" >
+				<div class="link"  *ngFor=" let usuario of empleados">
+					<a  routerLink="/usuario/{{usuario._id}}" routerLinkActive="active">
+						<div class="usuario">
+							<div class="image">
+								<img src="{{url+'get-image/'+usuario.imagen}}" *ngIf="usuario.imagen"/>
+								<img class="product__img" src="../../assets/img/no-disponible.png" *ngIf="!usuario.imagen" />
+							</div>
+							<h3 class="datos">{{usuario.usuario}} - {{usuario.tipoUsuario}}</h3>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="tipousuario" (click)="ishidden2=!ishidden2">
+			<h2 class="main-title">Clientes</h2>
+		</div>
+		<div class="contenido" [hidden]="ishidden2">
+			<div class="listaUsuarios" >
+				<div class="link"  *ngFor=" let usuario of clientes">
+					<a  routerLink="/usuario/{{usuario._id}}" routerLinkActive="active">
+						<div class="usuario">
+							<div class="image">
+								<img src="{{url+'get-image/'+usuario.imagen}}" *ngIf="usuario.imagen"/>
+								<img class="product__img" src="../../assets/img/no-disponible.png" *ngIf="!usuario.imagen" />
+							</div>
+							<h3 class="datos">{{usuario.usuario}} - {{usuario.tipoUsuario}}</h3>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="tipousuario" (click)="ishidden3=!ishidden3">
+			<h2 class="main-title">Todos los usuarios</h2>
+		</div>
+		<div class="contenido" [hidden]="ishidden3">
+			<div class="listaUsuarios" >
+				<div class="link"  *ngFor=" let usuario of usuarios">
+					<a  routerLink="/usuario/{{usuario._id}}" routerLinkActive="active">
+						<div class="usuario">
+							<div class="image">
+								<img src="{{url+'get-image/'+usuario.imagen}}" *ngIf="usuario.imagen"/>
+								<img class="product__img" src="../../assets/img/no-disponible.png" *ngIf="!usuario.imagen" />
+							</div>
+							<h3 class="datos">{{usuario.usuario}} - {{usuario.tipoUsuario}}</h3>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
