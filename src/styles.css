@@ -349,6 +349,7 @@ margin-bottom: 20px !important;
 }
 /*estilos web*/
 @media screen and (min-width: 1024px){ 
+  
   .container{
     width: 1000px;
     margin: auto;
@@ -406,6 +407,8 @@ cursor: pointer;
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
+    z-index: 6;
+  pointer-events: auto;
   }
   .menu{
     position: static;
@@ -419,6 +422,7 @@ cursor: pointer;
   .menu__link:hover{
     background: #FF4E00;
     color: white;
+    transition: all 0.5s;
   }
   .main-header__btn:hover{
   cursor: pointer;
