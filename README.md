@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.4.
 
+Proyecto creado para la materia de "Lenguaje de programacion visual". Se creó una tienda online con carrusel de imagenes, existencias, ofertas y creacion de reportes diarios, semanales y mensuales, además de un sistema de gestion de inventario y usuarios, permite la creacion de usuarios de tipo empleado, cliente y administrador.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
