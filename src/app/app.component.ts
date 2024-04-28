@@ -1,4 +1,4 @@
-import { Component, OnInit, afterNextRender } from '@angular/core';
+import { Component, OnInit, afterNextRender,Renderer2 } from '@angular/core';
 import {Router} from '@angular/router';
 @Component({
   selector: 'app-root',
@@ -10,9 +10,14 @@ export class AppComponent implements OnInit {
   public usuario;
   public tipousuario: any;
   public id:any;
-  constructor(private router:Router){
+  public btnMenu: any;
+  public mainNav: any;
+  public btnLink: any;
+  constructor(private router:Router,private renderer: Renderer2){
     
     //console.log("Bienvenido "+this.usuario);
+    
+
   }
 
   ngOnInit(): void {
@@ -24,8 +29,23 @@ export class AppComponent implements OnInit {
       this.tipousuario=localStorage.getItem("tipousuario");
       this.id=localStorage.getItem("id");
     }
+
+
+    this.btnMenu = document.querySelector("#btn-menu");
+    this.mainNav = document.querySelector("#main-nav");
+    this.renderer.listen(this.btnMenu,'click',()=>{
+      this.mainNav.classList.toggle("mostrar");//antes toggle
+    });
+
+    this.btnLink = document.querySelector(".menu");
+    this.renderer.listen(this.btnLink,'click',()=>{
+      this.mainNav.classList.remove("mostrar");
+    });
     
+
   }
+
+
   logout(): void{
 
     this.router.navigate(['home']).then(() => {localStorage.clear();sessionStorage.clear();window.location.reload();});

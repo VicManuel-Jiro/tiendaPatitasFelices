@@ -45,7 +45,7 @@ a{
   text-align: center;
   font-size: 2.5em;
   margin: 10px 0;
-
+cursor: pointer;
   font-family: "Pet-shop";
 }
 .content{
@@ -56,15 +56,30 @@ a{
 .main-nav{
   opacity: 0;
   visibility: hidden;
+  z-index: 0;
+  pointer-events: none;
   transition: all 0.5s;
+  /*z-index: 6;*/
+}
+.mostrar{
+  opacity: 1;
+  visibility: visible;
   z-index: 6;
+  pointer-events: auto;
+}
+.ocultar{
+  opacity: 0;
+  visibility: hidden;
+  z-index: 0;
+  transition: all 0.1s;
+
 }
 .content{
   min-height: calc(100% - 300px);
 }
 .menu{
   position: absolute;
-  top: 165px;
+  top: calc(100% - 90%);
   left: 0;
   background: #212121;
   width: 100%;
@@ -87,10 +102,7 @@ a{
 .menu__link:hover{
   background: #FF4E00;
 }
-.mostrar{
-  opacity: 1;
-  visibility: visible;
-}
+
 .main-header__container{
   display: flex;
   justify-content: space-between;
@@ -109,10 +121,7 @@ a{
   cursor: pointer;
   margin-left: auto;
 }
-.mostrar{
-  opacity: 1;
-  visibility: visible;
-}
+
 .main-header__call{
   color: red;
 }
@@ -377,6 +386,8 @@ margin-bottom: 20px !important;
     font-size: 4em;
     margin: 0;
     border-bottom: 1px solid #ccc;
+cursor: pointer;
+    
   }
   .main-header__link{
     margin-bottom: 20px;

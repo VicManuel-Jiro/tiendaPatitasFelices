@@ -42,7 +42,7 @@ public mascotas_nuevas: any[]=[];
       this.sliderSectionFirst=document.querySelectorAll(".slider__section")[0];
       this.slider.style.marginLeft="-200%";
       this.slider.style.transition="all 0.5s";
-      console.log("hh")
+      //console.log("hh")
       setTimeout(()=>{
         this.slider.style.transition="none";
         this.slider.insertAdjacentElement('beforeend',this.sliderSectionFirst);
@@ -61,7 +61,7 @@ public mascotas_nuevas: any[]=[];
       },500);});
     //this.btnRight.addEventListener('click',this.Next());
     //this.btnLeft.addEventListener('click',this.Prev());
-    setInterval(()=>{this.Next();},9000);
+    //setInterval(()=>{this.Next();},9000);
   }
   addToCart(product: Producto){
     this._carritoservicio.addToCart(product);
@@ -77,7 +77,8 @@ getProductos(){
         }
       },
       error => {
-        console.log(<any>error);
+        //console.log(<any>error);
+        console.log("hubo un error al cargar los productos")
       }
     );
   }
@@ -91,23 +92,24 @@ getProductos(){
         }
       },
       error => {
-        console.log(<any>error);
+        //console.log(<any>error);
+        console.log("hubo un error al cargar las mascotas")
       }
     );
   }
-
+/*
 Next(){
   this.sliderSectionFirst=document.querySelectorAll(".slider__section")[0];
   this.slider.style.marginLeft="-200%";
   this.slider.style.transition="all 0.5s";
-  console.log("hh")
+  //console.log("hh")
   setTimeout(()=>{
     this.slider.style.transition="none";
     this.slider.insertAdjacentElement('beforeend',this.sliderSectionFirst);
     this.slider.style.marginLeft="-100%";
   },500);
 }
-/*
+
 Prev(){
   this.sliderSection=document.querySelectorAll(".slider__section");
   this.sliderSectionLast=this.sliderSection[this.sliderSection.length -1];

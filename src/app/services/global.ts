@@ -1,3 +1,3 @@
 export var Global = {
-url: 'http://localhost:3700/api/'
+url: 'https://vicmanuel-jiro.github.io/tiendaPatitasFelices:3700/api/'
 };
