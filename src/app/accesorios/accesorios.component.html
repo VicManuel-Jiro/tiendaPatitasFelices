@@ -9,7 +9,7 @@
 		<div class="product__new" >
 			<a class="product_link" routerLink="/accesorio/{{item._id}}" routerLinkActive="active">
 				<img class="product__img" src="{{url+'get-image/'+item.imagen}}" *ngIf="item.imagen"/>
-				<img class="product__img" src="../../assets/img/no-disponible.png" *ngIf="!item.imagen" />
+				<img class="product__img" src="./assets/img/no-disponible.png" *ngIf="!item.imagen" />
 				<div class="product__description">
 					<h3 class="product__title" [ngStyle]="{'text-decoration':item.existencia == 0 ? 'line-through' :'transparent' }">{{item.nombre}}</h3>
 					<span class="product__price">{{item.precio.valueOf()  | currency}}</span>
@@ -21,7 +21,49 @@
 		</div>
 	</div>
 </section>
-
+<!--seccion de muestra-->
+<section class="container-products">
+	<div class="product__new">
+		<a class="product_link" href="">
+		<img src="./assets/img/plato.jpg" alt="" class="product__img">
+		<div class="product__description">
+			<h3 class="product__title">Plato control de estres</h3>
+			<span class="product__price">$100.00</span>
+		</div>
+		</a>
+		<p class="product__shop">Agregar al carrito <i class="product__icon fas fa-cart-plus"></i></p>
+	</div>
+	<div class="product__new">
+		<a class="product_link" href="">
+		<img src="./assets/img/cadena.jpg" alt="" class="product__img">
+		<div class="product__description">
+			<h3 class="product__title">cadena pequeña</h3>
+			<span class="product__price">$70.00</span>
+		</div>
+		</a>
+		<p class="product__shop">Agregar al carrito <i class="product__icon fas fa-cart-plus"></i></p>
+	</div>
+	<div class="product__new">
+		<a class="product_link" href="">
+		<img src="./assets/img/croquetas.jpg" alt="" class="product__img">
+		<div class="product__description">
+			<h3 class="product__title">costal croqueta campeon 20Kg</h3>
+			<span class="product__price">$300.00</span>
+		</div>
+		</a>
+		<p class="product__shop">Agregar al carrito <i class="product__icon fas fa-cart-plus"></i></p>
+	</div>
+	<div class="product__new">
+		<a class="product_link" href="">
+		<img src="./assets/img/pechera.jpg" alt="" class="product__img">
+		<div class="product__description">
+			<h3 class="product__title">Pechera perro pequeño</h3>
+			<span class="product__price">$200.00</span>
+		</div>
+		</a>
+		<p class="product__shop">Agregar al carrito <i class="product__icon fas fa-cart-plus"></i></p>
+	</div>
+</section>
 
 <h2 class="main-title">Nuestros productos</h2>
 
@@ -30,7 +72,7 @@
 		<div class="product" >
 			<a class="product_link" routerLink="/accesorio/{{item._id}}" routerLinkActive="active">
 				<img class="product__img" src="{{url+'get-image/'+item.imagen}}" *ngIf="item.imagen"/>
-				<img class="product__img" src="../../assets/img/no-disponible.png" *ngIf="!item.imagen" />
+				<img class="product__img" src="./assets/img/no-disponible.png" *ngIf="!item.imagen" />
 				<div class="product__description">
 					<h3 class="product__title" [ngStyle]="{'text-decoration':item.existencia == 0 ? 'line-through' :'transparent' }">{{item.nombre}}</h3>
 					<span class="product__price">{{item.precio.valueOf()  | currency}}</span>
@@ -43,3 +85,46 @@
 	</div>
 </section>
 
+<!--seccion de muestra-->
+<section class="container-products">
+	<div class="product">
+		<a class="product_link" href="">
+		<img src="./assets/img/plato.jpg" alt="" class="product__img">
+		<div class="product__description">
+			<h3 class="product__title">Plato control de estres</h3>
+			<span class="product__price">$100.00</span>
+		</div>
+		</a>
+		<p class="product__shop">Agregar al carrito <i class="product__icon fas fa-cart-plus"></i></p>
+	</div>
+	<div class="product">
+		<a class="product_link" href="">
+		<img src="./assets/img/cadena.jpg" alt="" class="product__img">
+		<div class="product__description">
+			<h3 class="product__title">cadena pequeña</h3>
+			<span class="product__price">$70.00</span>
+		</div>
+		</a>
+		<p class="product__shop">Agregar al carrito <i class="product__icon fas fa-cart-plus"></i></p>
+	</div>
+	<div class="product">
+		<a class="product_link" href="">
+		<img src="./assets/img/croquetas.jpg" alt="" class="product__img">
+		<div class="product__description">
+			<h3 class="product__title">costal croqueta campeon 20Kg</h3>
+			<span class="product__price">$300.00</span>
+		</div>
+		</a>
+		<p class="product__shop">Agregar al carrito <i class="product__icon fas fa-cart-plus"></i></p>
+	</div>
+	<div class="product">
+		<a class="product_link" href="">
+		<img src="./assets/img/pechera.jpg" alt="" class="product__img">
+		<div class="product__description">
+			<h3 class="product__title">Pechera perro pequeño</h3>
+			<span class="product__price">$200.00</span>
+		</div>
+		</a>
+		<p class="product__shop">Agregar al carrito <i class="product__icon fas fa-cart-plus"></i></p>
+	</div>
+</section>

@@ -1,27 +1,3 @@
-.main-header__btn{
-  border: 1px solid #454546;
-  color: #454546;
-  display: block;
-  padding: 10px;
-  width: 140px;
-  text-decoration: none;
-  margin-bottom: 20px;
-  transition: all 0.5s;
-}
-.product_link{
-   text-decoration: none;
-}
-.product__title{
-  color: black;
-  margin: 10px;
-}
-.product__txt{
-  margin: 0;
-  color: black;
-}
-.product__description{
-  margin: 10px;
-}
 .product__price{
   margin: 5px;
   color: #ff4e00;
@@ -53,4 +29,106 @@
 }
 .product{
   display: block;
+}
+
+.btn-shop{
+  display: block;
+  border: 1px solid #FF4E00;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  width: 150px;
+  margin: 10px auto;
+  transition: all 0.5s;
+}
+.btn-shop:hover{
+  background: #FF4E00;
+  color: white;
+}
+
+
+.product_link{
+   text-decoration: none;
+}
+
+.product__title{
+  color: black;
+}
+
+.product__txt{
+  margin: 0;
+  color: black;
+}
+
+.product__estado{
+  margin: 0;
+  color: #ff4e00;
+  font-weight: bold;
+}
+.main-header__btn{
+  border: 1px solid #454546;
+  color: #454546;
+  display: block;
+  padding: 10px;
+  width: 140px;
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: all 0.5s;
+}
+  .main-header__btn:hover{
+  cursor: pointer;
+  background: #FF4E00;
+  color: white;
+  border-color: #FF4E00;
+}
+/*estilos tablet*/
+@media screen and (min-width: 768px){
+  .slider{
+    height: 400px;
+  }
+  .product__img{
+    height: 130px;
+  }
+  
+}
+/*estilos web*/
+@media screen and (min-width: 1024px){ 
+  .container-slider{
+    width: 1000px;
+    margin: auto;
+  }
+  .slider{
+    height: 550px;
+    font-size: 1.5em;
+  }
+  .container-products{
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .product__img{
+    height: 160px;
+  }
+
+}
+@media screen and (min-width: 1280px){ 
+  .container-slider{
+    width: 1200px;
+  }
+  .slider{
+    height: 600px;
+  }
+  .product__img{
+    height: 180px;
+  }
+}
+@media screen and (min-width: 1600px){ 
+  .container-slider{
+    width: 1500px;
+  }
+  .slider{
+    height: 650px;
+  }
+  .product__img{
+    height: 200px;
+  }
 }

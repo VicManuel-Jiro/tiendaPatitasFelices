@@ -30,12 +30,13 @@
 		</div>
 
 <h2 class="main-title">Nuevos Productos</h2>
+<!--seccion con back-->
 <section class="container-products">
 	<div  *ngFor=" let item of products_new | slice:0:4;">
 		<div class="product__new" >
 			<a class="product_link" routerLink="/accesorio/{{item._id}}" routerLinkActive="active">
 				<img class="product__img" src="{{url+'get-image/'+item.imagen}}" *ngIf="item.imagen"/>
-				<img class="product__img" src="../../assets/img/no-disponible.png" *ngIf="!item.imagen" />
+				<img class="product__img" src="./assets/img/no-disponible.png" *ngIf="!item.imagen" />
 				<div class="product__description">
 					<h3 class="product__title" [ngStyle]="{'text-decoration':item.existencia == 0 ? 'line-through' :'transparent' }">{{item.nombre}}</h3>
 					<span class="product__price">{{item.precio.valueOf()  | currency}}</span>
@@ -47,21 +48,100 @@
 		</div>
 	</div>
 </section>
-
+<!--seccion de muestra-->
+<section class="container-products">
+	<div class="product__new">
+		<a class="product_link" href="">
+		<img src="./assets/img/plato.jpg" alt="" class="product__img">
+		<div class="product__description">
+			<h3 class="product__title">Plato control de estres</h3>
+			<span class="product__price">$100.00</span>
+		</div>
+		</a>
+		<p class="product__shop">Agregar al carrito <i class="product__icon fas fa-cart-plus"></i></p>
+	</div>
+	<div class="product__new">
+		<a class="product_link" href="">
+		<img src="./assets/img/cadena.jpg" alt="" class="product__img">
+		<div class="product__description">
+			<h3 class="product__title">cadena pequeña</h3>
+			<span class="product__price">$70.00</span>
+		</div>
+		</a>
+		<p class="product__shop">Agregar al carrito <i class="product__icon fas fa-cart-plus"></i></p>
+	</div>
+	<div class="product__new">
+		<a class="product_link" href="">
+		<img src="./assets/img/croquetas.jpg" alt="" class="product__img">
+		<div class="product__description">
+			<h3 class="product__title">costal croqueta campeon 20Kg</h3>
+			<span class="product__price">$300.00</span>
+		</div>
+		</a>
+		<p class="product__shop">Agregar al carrito <i class="product__icon fas fa-cart-plus"></i></p>
+	</div>
+	<div class="product__new">
+		<a class="product_link" href="">
+		<img src="./assets/img/pechera.jpg" alt="" class="product__img">
+		<div class="product__description">
+			<h3 class="product__title">Pechera perro pequeño</h3>
+			<span class="product__price">$200.00</span>
+		</div>
+		</a>
+		<p class="product__shop">Agregar al carrito <i class="product__icon fas fa-cart-plus"></i></p>
+	</div>
+</section>
 <h2 class="main-title">Nuevas Mascotas</h2>
-
+<!--seccion con back-->
 <section class="container-products">
 	<div class="product__new" *ngFor="let nuevo of mascotas_nuevas | slice:0:4">
 		<a class="product_link" routerLink="/mascota/{{nuevo._id}}" routerLinkActive="active">
 			<img class="product__img" src="{{url+'get-image/'+nuevo.imagen}}" *ngIf="nuevo.imagen"/>
-			<img class="product__img" src="../../assets/img/no-disponible.png" *ngIf="!nuevo.imagen" />
+			<img class="product__img" src="./assets/img/no-disponible.png" *ngIf="!nuevo.imagen" />
 			<div class="product__description">
 				<h3 class="product__title">{{nuevo.raza}} {{nuevo.nombre}}</h3>
-				<p class="product__txt"><b>En Stock:</b> {{nuevo.edad}}</p>
+				<p class="product__txt"><b>Edad:</b> {{nuevo.edad}}</p>
 				<p class="product__txt"><b>Tipo de mascota:</b> {{nuevo.raza}}</p><br>
 				<p class="product__txt"><b>Estado:</b> </p>
 				<p [style.color]="nuevo.estado=='No Disponible' ? 'red': 'green'" class="product__estado">{{nuevo.estado}}</p>
 			</div>
+		</a>
+	</div>
+<!--seccion de muestra-->
+	<div class="product__new">
+		<a class="product_link" href="">
+		<img src="./assets/img/husky.jpg" alt="" class="product__img">
+		<div class="product__description">
+			<h3 class="product__title">Husky. Bruno</h3>
+			<p class="product__txt"><b>Edad:</b> 1 año</p>
+			<p class="product__txt"><b>Tipo de mascota:</b> Perro</p><br>
+			<p class="product__txt"><b>Estado:</b> </p>
+			<p class="product__estado">Disponible</p>
+		</div>
+		</a>
+	</div>
+	<div class="product__new">
+		<a class="product_link" href="">
+		<img src="./assets/img/gato2.jpg" alt="" class="product__img">
+		<div class="product__description">
+			<h3 class="product__title">Gato. Linda</h3>
+			<p class="product__txt"><b>Edad:</b> 3 meses</p>
+			<p class="product__txt"><b>Tipo de mascota:</b> Gato</p><br>
+			<p class="product__txt"><b>Estado:</b> </p>
+			<p class="product__estado">Disponible</p>
+		</div>
+		</a>
+	</div>
+	<div class="product__new">
+		<a class="product_link" href="">
+		<img src="./assets/img/periquitos.jpg" alt="" class="product__img">
+		<div class="product__description">
+			<h3 class="product__title">Periquito. Max</h3>
+			<p class="product__txt"><b>Edad:</b> 2 años</p>
+			<p class="product__txt"><b>Tipo de mascota:</b> Ave</p><br>
+			<p class="product__txt"><b>Estado:</b> </p>
+			<p class="product__estado">Disponible</p>
+		</div>
 		</a>
 	</div>
 </section>
